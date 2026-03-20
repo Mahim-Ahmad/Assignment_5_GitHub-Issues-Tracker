@@ -211,3 +211,64 @@ button{
   color:#fff;
 }
 
+
+.info {
+  max-width: 1110px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1.5px solid rgb(28, 31, 45)c; 
+  padding: 14px 22px;
+  border-bottom: 2px solid rgb(10, 10, 10);
+  border-radius: 10px 10px 0 0;
+  
+}
+
+
+.left-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.left-info img { 
+    width: 40px; 
+    height: 40px; 
+    object-fit: contain; 
+}
+.left-info h3  { 
+    font-size: 16px; 
+    font-weight: 800; 
+    color: #0b42c1; 
+    margin: 0 0 2px 0; 
+}
+
+.left-info .para { 
+    font-size: 12.5px;
+    color: #94a3b8; 
+    margin: 0; }
+
+
+.right-info { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+}
+
+.right-info span {
+  display: flex; 
+  align-items: center; 
+  gap: 6px;
+  font-size: 13px; 
+  font-weight: 600; 
+  color: #475569;
+}
+.right-info img { 
+    width: 18px; 
+    height: 18px;
+ }
+
+
+
+
