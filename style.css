@@ -1,5 +1,5 @@
 body{
-    font-family: Arial, sans-serif;
+    font-family: "Geist", sans-serif;
     margin:0;
     padding:0;
     background:#f3f4f6;
@@ -102,22 +102,18 @@ button{
 
 
 
-body{
-    font-family:Arial;
-    margin:0;
-    background:#f3f4f6;
-}
-
-
-
 .navbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 50px;
-    background:white;
+    padding:15px 40px;
+    background:#fff;
     box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    border-bottom:1px solid #ddd;
+    margin-bottom: 55px;
 }
+
+
 
 .nav-right{
     display:flex;
@@ -149,3 +145,43 @@ body{
     margin-right:8px;
     vertical-align:middle;
 }
+
+
+
+
+.img{
+    height: 50px;
+    weight: 50px;
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.issue{
+    margin-bottom: 15px;
+}
+
+
+.left{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.right input{
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+.right button{
+  background:#6c3cff;
+  color:#fff;
+  padding:8px 15px;
+  border:none;
+  border-radius:5px;
+}
+
