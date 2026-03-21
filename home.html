@@ -63,7 +63,38 @@
 
 <div style="padding: 40px;"></div>
 
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
 
+    <h2 id="mTitle"></h2>
+
+    <div class="meta">
+      <span id="mStatus" class="status"></span>
+      <span class="meta-text">• Opened by <b id="mAuthor"></b></span>
+      <span class="meta-text" id="mDate"></span>
+    </div>
+
+    <div id="mLabels" class="labels"></div>
+
+    <p id="mDesc" class="desc"></p>
+
+    <div class="bottom-box">
+      <div>
+        <p>Assignee:</p>
+        <b id="mAssignee"></b>
+      </div>
+
+      <div>
+        <p>Priority:</p>
+        <span id="mPriority" class="priority"></span>
+      </div>
+    </div>
+
+    <button onclick="closeModal()" class="close-btn">Close</button>
+
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

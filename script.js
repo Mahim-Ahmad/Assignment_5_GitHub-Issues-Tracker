@@ -14,17 +14,18 @@ let allIssues = [];
 async function load() {
   loader.style.display = "block";
 
-  try {
-    const res = await fetch(API);
-    const data = await res.json();
+  const res = await fetch(API);
 
-    allIssues = data.data;
-    render(allIssues);
-
-  } catch (err) {
-    console.log(err);
+  if (!res.ok) {
     container.innerHTML = "<h3>Failed to load data</h3>";
+    loader.style.display = "none";
+    return;
   }
+
+  const data = await res.json();
+
+  allIssues = data.data || [];
+  render(allIssues);
 
   loader.style.display = "none";
 }
@@ -97,6 +98,34 @@ function render(data) {
 }
 
 
+const modal = document.getElementById("modal");
+const mTitle = document.getElementById("mTitle");
+const mDesc = document.getElementById("mDesc");
+const mAuthor = document.getElementById("mAuthor");
+const mAssignee = document.getElementById("mAssignee");
+const mDate = document.getElementById("mDate");
+const mStatus = document.getElementById("mStatus");
+const mPriority = document.getElementById("mPriority");
+const mLabels = document.getElementById("mLabels");
+
+
+function openModal(i) {
+  modal.classList.remove("hidden");
+
+  mTitle.innerText = i.title;
+  mDesc.innerText = i.description;
+  mAuthor.innerText = i.author;
+  mAssignee.innerText = i.author;
+  mDate.innerText = "• " + i.createdAt;
+
+  mStatus.innerText = i.status;
+  mStatus.className = "status " + i.status;
+
+  mPriority.innerText = i.priority;
+  mPriority.className = "priority " + i.priority.toLowerCase();
+
+  mLabels.innerHTML = renderLabels(i.labels);
+}
 
 function closeModal() {
   modal.classList.add("hidden");
@@ -108,24 +137,26 @@ async function searchIssue() {
 
   loader.style.display = "block";
 
-  try {
-    if (!text) {
-      render(allIssues);
-      loader.style.display = "none";
-      return;
-    }
+  if (!text) {
+    render(allIssues);
+    loader.style.display = "none";
+    return;
+  }
 
-    const res = await fetch(`${API}/search?q=${text}`);
-    const data = await res.json();
+  const res = await fetch(`${API}/search?q=${text}`);
 
-    if (data.data.length === 0) {
-      container.innerHTML = "<h3>No Result Found</h3>";
-    } else {
-      render(data.data);
-    }
+  if (!res.ok) {
+    container.innerHTML = "<h3>Search Failed</h3>";
+    loader.style.display = "none";
+    return;
+  }
 
-  } catch (err) {
-    console.log(err);
+  const data = await res.json();
+
+  if (!data.data || data.data.length === 0) {
+    container.innerHTML = "<h3>No Result Found</h3>";
+  } else {
+    render(data.data);
   }
 
   loader.style.display = "none";
